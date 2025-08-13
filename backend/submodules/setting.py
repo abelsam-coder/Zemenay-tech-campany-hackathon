@@ -7,7 +7,7 @@ def config():
     username = session.get("username")
     if request.method == "POST":
         content = request.form["privacy"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("UPDATE setting SET content = ? WHERE username = ?",(content,username))
         db.commit()
@@ -17,7 +17,7 @@ def confi():
     username = session.get("username")
     if request.method == "POST":
         content = request.form["privacy"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("UPDATE setting SET like = ? WHERE username = ?",(content,username))
         db.commit()
@@ -27,7 +27,7 @@ def conf():
     username = session.get("username")
     if request.method == "POST":
         content = request.form["privacy"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("UPDATE setting SET comment = ? WHERE username = ?",(content,username))
         db.commit()
@@ -37,8 +37,9 @@ def con():
     username = session.get("username")
     if request.method == "POST":
         content = request.form["privacy"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("UPDATE setting SET chat = ? WHERE username = ?",(content,username))
         db.commit()
+
     return render_template("settingchat.html")  
