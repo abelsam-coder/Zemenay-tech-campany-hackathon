@@ -27,7 +27,7 @@ def hom():
         follow = followers   
     c.execute("SELECT username,name,file,caption,id,date FROM post WHERE username != ? ORDER BY RANDOM()", (usernam,))
     f = c.fetchall()
-    
+    followerrr = ''
     l += 1
     for username,name,file,caption,id,date in f:
         c.execute("SELECT follower FROM follow WHERE follower = ? AND username = ?",(usernam,username))
@@ -91,4 +91,5 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
