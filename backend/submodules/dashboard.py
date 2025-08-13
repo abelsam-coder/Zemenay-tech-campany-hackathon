@@ -20,6 +20,7 @@ def hom():
     else:
         n = "false"  
     c.execute("SELECT image FROM profile WHERE name = ?",(usernam,))
+    print(c.fetchone())
     profile = c.fetchone()[0]
     c.execute("SELECT COUNT(*) FROM follow WHERE username = ?",(usernam,))
     followers = c.fetchone()
@@ -91,5 +92,6 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
