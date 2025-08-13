@@ -9,7 +9,7 @@ def reco():
         return redirect('/signup')
     if request.method == "POST":
         email = request.form["email"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("INSERT INTO recovery (username,email) VALUES(?,?)",(username,email))
         db.commit()
@@ -22,9 +22,10 @@ def reco():
         return redirect('/signup')
     if request.method == "POST":
         word = request.form["word"]
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("INSERT INTO recovery (username,email) VALUES(?,?)",(username,word))
         db.commit()
         flash("stored successfully")        
+
     return render_template("word.html")    
