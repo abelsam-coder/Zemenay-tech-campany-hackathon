@@ -4,7 +4,7 @@ import sqlite3,time
 login = Blueprint("login",__name__)
 @login.route('/login',methods=["POST","GET"])
 def signin():
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     if request.method == "POST":
         username = request.form["username"]
@@ -81,4 +81,5 @@ def delete():
     c = db.cursor()
     c.execute("DELETE FROM attempt WHERE device = ?",(device,))
     db.commit()          
+
     return jsonify({"device":device})
