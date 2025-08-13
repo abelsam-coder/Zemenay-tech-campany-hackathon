@@ -44,7 +44,11 @@ def hom():
         c.execute("SELECT comment,like,content FROM setting WHERE username = ?",(username,))
         r = c.fetchone()
         c.execute("SELECT image FROM profile WHERE name = ?",(username,))
-        p = c.fetchone()[0]
+        pp = c.fetchone()
+        if pp:
+            p = pp[0]
+        else:    
+            p=  url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")
         c.execute("SELECT postid FROM like WHERE username = ?",(usernam,))
         lik = c.fetchall()
         print(f"iuviucvigcy {lik}")
@@ -95,6 +99,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
