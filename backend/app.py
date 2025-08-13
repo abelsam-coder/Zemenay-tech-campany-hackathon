@@ -148,4 +148,4 @@ def saved(username):
 app.extensions["sock"] = sock
 app.extensions["bcrypt"] = bcrypt
 
-app.run(host="0.0.0.0",port=8080)
+
