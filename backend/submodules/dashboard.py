@@ -24,8 +24,7 @@ def hom():
     if c.fetchone():
         profile = c.fetchone()[0]
     else:
-        with open("static/t.txt","r") as k:
-            profile = k.read()
+       profile =  url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")
     c.execute("SELECT COUNT(*) FROM follow WHERE username = ?",(usernam,))
     followers = c.fetchone()
     for followers in followers:
@@ -96,6 +95,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
