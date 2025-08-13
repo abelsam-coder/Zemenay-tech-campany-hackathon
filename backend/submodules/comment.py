@@ -10,7 +10,7 @@ aa = []
 @comment.route('/comment/<string:id>', methods=["POST", "GET"])
 def commentfunction(id):
     
-    database = sqlite3.connect("../database/database.db")
+    database = sqlite3.connect("database/database.db")
     cursor = database.cursor()
     username = session.get("username")
 
@@ -74,7 +74,7 @@ def commentfunction(id):
 @comment.route('/comment/edit/<string:id>',methods=["POST","GET"]) 
 def uytf(id):
     username = session.get("username")
-    database = sqlite3.connect("../database/database.db")
+    database = sqlite3.connect("database/database.db")
     cursor = database.cursor()
     cursor.execute("SELECT postid FROM comment WHERE messageid = ?",(id,))
     f = cursor.fetchone()[0]
@@ -88,11 +88,12 @@ def uytf(id):
 def delete(id):
     print("will")
     username = session.get("username")
-    database = sqlite3.connect("../database/database.db")
+    database = sqlite3.connect("database/database.db")
     cursor = database.cursor()
     cursor.execute("SELECT postid FROM comment WHERE messageid = ?",(id,))
     f = cursor.fetchone()[0]
     print(f)
     cursor.execute("DELETE FROM comment WHERE name = ? AND messageid = ?",(username,id))
     database.commit()       
+
     return redirect(f'/comment/{f}')
