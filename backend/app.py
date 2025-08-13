@@ -44,7 +44,7 @@ def chat():
     receiver = request.args.get("receiver")
     username = session.get("username")
 
-    conn = sqlite3.connect("../database/database.db")
+    conn = sqlite3.connect("database/database.db")
     cursor = conn.cursor()
     cursor.execute("SELECT username FROM authentication")
     f = cursor.fetchall()
@@ -81,7 +81,7 @@ def chat():
 @app.route('/security')
 def sec():
     username = session.get("username")
-    conn = sqlite3.connect("../database/database.db")
+    conn = sqlite3.connect("database/database.db")
     c = conn.cursor()
     c.execute("SELECT device FROM attempttwo WHERE username = ?",(username,))
     f = c.fetchall()
@@ -89,7 +89,7 @@ def sec():
 @app.route('/security/kikcout/<string:device>')
 def kick(device):
     username = session.get("username")
-    conn = sqlite3.connect("../database/database.db")
+    conn = sqlite3.connect("database/database.db")
     c = conn.cursor()
     c.execute("INSERT INTO kickout (username , device) VALUES(?,?)",(username,device))
     conn.commit()
@@ -113,7 +113,7 @@ def handle_private_message(data):
     emit("private_message", {"sender": sender, "message": message, "timestamp": timestamp}, room=receiver_name)
 @app.route('/post/like/<string:id>')
 def li(id):
-    conn = sqlite3.connect("../database/database.db")
+    conn = sqlite3.connect("database/database.db")
     c = conn.cursor()
     c.execute("SELECT username FROM like WHERE postid = ?",(id,))
     f = c.fetchall()
@@ -129,7 +129,7 @@ def li(id):
     return render_template("postlike.html",f=a)    
 @app.route('/saved/<string:username>')
 def saved(username):
-    conn = sqlite3.connect("../database/database.db")
+    conn = sqlite3.connect("database/database.db")
     c = conn.cursor()   
     c.execute("SELECT postid FROM save WHERE username = ?", (username,))
     f = c.fetchall()
@@ -147,5 +147,6 @@ def saved(username):
   
 app.extensions["sock"] = sock
 app.extensions["bcrypt"] = bcrypt
+
 
 
