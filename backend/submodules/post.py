@@ -28,7 +28,7 @@ def send():
         encode = base64.b64encode(file.read()).decode()
         encode = f"data:{filetype};base64,{encode}"
         date = datetime.now().strftime("%B %A %y")
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         c.execute("INSERT INTO post (username,name,file,key,caption,id,date) VALUES(?,?,?,?,?,?,?)",(username,name,encode,hashtag,caption,id,date))
         db.commit()
@@ -86,3 +86,4 @@ def delete(id):
     db.commit()
 
     return redirect('/profile')         
+
