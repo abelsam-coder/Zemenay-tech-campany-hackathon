@@ -21,7 +21,7 @@ def hom():
         n = "false"  
     c.execute("SELECT image FROM profile WHERE name = ?",(usernam,))
     print(c.fetchone())
-    if c.fethcone():
+    if c.fetchone():
         profile = c.fetchone()[0]
     else:
         with open("static/t.txt","r") as k:
@@ -96,6 +96,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
