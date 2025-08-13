@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Likes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        .user-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .user-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .username {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Users Who Liked This Post</h1>
+
+    {% if f %}
+        {% for user in f %}
+            <div class="user-card">
+                <img src="{{user.image}}" alt="Profile image of {{ user.username }}">
+                <div class="username"> {{user.username}}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No likes yet. Be the first to show some love!</p>
+    {% endif %}
+</body>
+</html>

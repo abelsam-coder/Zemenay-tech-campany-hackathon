@@ -1,0 +1,70 @@
+#form{
+    display:flex;
+    border-radius:10px;
+    flex-direction: column;
+    width:27em;
+    padding-right: 1em;
+    box-shadow:0 0 5px rgb(70, 68, 68);
+    align-items: flex-start;
+    margin-left: 20em;
+    margin-top: 2em;
+}
+#form input{
+    width:30em;
+    height:3em
+}
+input[type="file"]{
+    border:2px solid black;
+    padding-top: 1em;
+    background:none;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+textarea{
+    width:30em;
+    height:8em;
+    white-space: pre-wrap;       /* Maintains whitespace and wraps text */
+  word-wrap: break-word;       /* Breaks long words */
+  overflow-wrap: break-word; 
+    padding-left: 1em;
+    border-radius:10px
+}
+button{
+    font-size: larger;
+    margin-top: 1em;
+    width:22em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+label{
+    margin-bottom: 0.5em;
+    color:white;
+}
+input,textarea{
+    margin-bottom: 0.5em;
+}
+video,#image-preview{
+    position: absolute;
+    right:0;
+    width:20em;
+    padding-right: 4em;
+    padding-top: 5em;
+}
+.q{
+    width:20em;
+    position: absolute;
+    right:0;
+    margin-right: 5em;
+    border-radius:10px;
+    margin-top: 10em;
+}
+@media only screen and (max-width: 480px){
+    nav{
+        display: none;
+        position: absolute;
+    }
+    form{
+        position: absolute;
+    }
+}

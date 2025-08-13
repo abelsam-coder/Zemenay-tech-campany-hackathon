@@ -1,0 +1,84 @@
+.a .im{
+    width:9em;
+    height:9em;
+    border-radius:50%;
+}
+main{
+    color:white;
+    padding:2em 2em;
+}
+.head{
+    
+    align-items:self-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+.rt{
+    display: flex;
+    gap:2em;
+    column-gap: 2em;
+    flex-wrap: wrap;   
+    margin-top: 2em;
+}
+.rrt{
+    border-radius:10px;
+    background:rgb(40, 37, 37);
+    height: fit-content;
+}
+.rrt h1{
+    font-family: "Staatliches", sans-serif;
+    padding-left: 0.5em;
+}
+.rrt img,video{
+    width:22em;
+    object-fit: cover;
+    height: 30em;
+}
+.rrt h2{
+    font-family: sans-serif;
+    padding-left: 0.5em;
+    white-space: normal;   
+    width:14em;   /* Allows text to wrap */
+  word-wrap: break-word;    /* Breaks long words if needed */
+  overflow-wrap: break-word;
+}
+.rrt span{
+    font-family: serif;
+     padding-left: 0.5em;
+}
+.fil{
+    width:22em;
+}
+.head h2{
+    margin-top: -1em;
+}
+.but{
+    margin-top: -5em;
+}
+.head{
+    display: flex;
+    flex-direction: column;
+}
+.l h1{
+    align-items:self-start
+}
+.ul li:hover{
+    background:none;
+    padding: 0;
+    width:auto
+}
+.a{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    margin-bottom:2em
+}
+.ul{
+    display: flex;
+    flex-direction: row;
+}
+.lit{
+    display: flex;
+    gap:5em
+}
+

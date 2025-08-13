@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <style>
+        .user-card {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 10px;
+            font-family: sans-serif;
+        }
+        .media {
+            max-width: 100%;
+        }
+        .meta {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ session.username }}</h1>
+    
+    {% for user in users %}
+    <div class="user-card" id="user-{{ user[0] }}">  <!-- Assuming user[0] is id -->
+        <h3>{{ user[1] }} ({{ user[2] }})</h3> <!-- username and name -->
+        <p>{{ user[3] }}</p> <!-- caption -->
+
+        {% if "image" in user[4] %}
+            <img src="{{ user[4] }}" alt="Media" class="media">
+        {% elif "video" in user[4] %}
+            <video controls src="{{ user[4] }}" class="media"></video>
+        {% endif %}
+
+        <div class="meta">
+            ❤️ Likes: {{ user[5] }} | 💬 Comments: {{ user[6] }}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

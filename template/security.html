@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Devices</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #e8f0fe;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .empty {
+      text-align: center;
+      color: #777;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Devices</h1>
+    {% if f and f|length > 0 %}
+      <ul>
+        {% for device in f %}
+          <li>{{ device[0] }}</li>
+        {% endfor %}
+      </ul>
+      <a href="">kickout</a>
+    {% else %}
+      <p class="empty">No devices found for your account.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

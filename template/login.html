@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merienda:wght@300..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/signup.css")}}">
+    <title>Login-page</title>
+    <style>
+        body{
+           background-image: linear-gradient( rgba(52, 52, 204, 0.141) 53%, rgba(35, 23, 255, 0.547) 100%), url("{{url_for("static",filename="image/austin-distel-QK1OhZmopBo-unsplash.jpg")}}");
+            background-attachment:fixed;
+            background-size:cover;
+            background-position:top;
+        }
+    </style>
+</head>
+<body>
+ <div class="all">
+       
+
+    <div class="k">
+    <!-- main -->
+
+    <div class="main">
+
+    <!-- form page  -->
+    <form action="/login" method="post">
+      <div class="rt">
+      <h1>Welcome back</h1>
+        <h2>Login to Account</h2>
+        </div>
+
+        <!-- jinja notification template -->
+
+        
+        
+        {%with message = get_flashed_messages(with_categories=True)%}
+        {%if message%}
+        {%for cat,message in message%}
+        <div class="messag">
+        <p><i class="fas fa-exclamation-triangle"></i>{{message}}</p>
+    </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+        
+        
+        
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Abebe" required="">
+        <label for="password">Password</label>
+        <input type="password" minlength="6" name="password" id="password" placeholder="......." required="">
+        <input type="hidden" name="device" id="device">
+        <button onclick="but()" type="submit" id="button">Login </button>
+        <input type="hidden" name="device" id="device">
+        <span id="count"></span>
+        <span id="war" style="color:red;"></span>
+        <span>Do not have an account? <a href="/signup">Signup</a></span>
+    </form>
+    </div>
+        <center>
+    <div class="anime">
+        <div class="container">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+    </div>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur
+        result="blur"
+        stdDeviation="10"
+        in="SourceGraphic"
+      ></feGaussianBlur>
+      <feColorMatrix
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
+        mode="matrix"
+        in="blur"
+      ></feColorMatrix>
+    </filter>
+  </defs>
+</svg>
+    </div>
+    </center>
+    <div class="bb">
+    </div>
+    
+    <script>
+      function but() {
+
+  // Show elements immediately
+  document.querySelector('.anime').style.display = "block";
+  document.querySelector('.bb').style.display = "block";
+
+  // Redirect after 5 seconds
+  setTimeout(() => {
+    document.querySelector('.anime').style.display = "none";
+  document.querySelector('.bb').style.display = "none";
+  }, 3000);
+}
+
+  const device = navigator.platform;
+  document.getElementById('device').value = device;
+
+  const timeCondition = "{{time}}"; // Jinja2-safe string
+  if (timeCondition === "timeslap") {
+    let r = 0;
+let m = 0;
+    const interval = setInterval(() => {
+      r += 1;
+      
+      let c = document.getElementById("count");
+      c.innerHTML = `${m}:${r}`;
+      let war = document.getElementById("war");
+      war.innerHTML = "Do not live the page if you live the time will <br> restart again !"
+      if (r === 60){
+        console.log(r)
+        m += 1
+        r = 0
+        
+      }
+      
+      console.log(r)
+      document.getElementById("username").disabled = true;
+      document.getElementById("password").disabled = true;
+      document.getElementById("button").disabled = true;
+
+      if (m >= 5) {
+        c.innerHTML = '';
+        war.innerHTML = "you can try now"
+        war.style.color = "green"
+        document.getElementById("username").disabled = false;
+        document.getElementById("password").disabled = false;
+        document.getElementById("button").disabled = false;
+
+        // Fix: GET request with query parameters
+        fetch('/login/delete?device=' + encodeURIComponent(device), {
+  method: "GET"
+})
+.then(response => response.json()) // or .text() depending on your backend
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
+
+        
+
+        clearInterval(interval); // Stop interval after execution
+      }
+    }, 1000); // Every second
+  }
+          document.querySelector('.messag').addEventListener("animationend",function (){
+         this.style.display = "none"
+})
+</script>
+</body>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merienda:wght@300..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/signup.css")}}">
+    <title>Signup-page</title>
+    <style>
+        body{
+            background-image: linear-gradient( rgba(52, 52, 204, 0.141) 53%, rgba(35, 23, 255, 0.547) 100%), url("{{url_for("static",filename="image/austin-distel-QK1OhZmopBo-unsplash.jpg")}}");
+            background-attachment:fixed;
+            background-size:cover;
+            background-position:top;
+        }
+    </style>
+</head>
+<body>
+    <!-- service -->
+
+    <center>
+    <div class="chat">Chat System</div>
+    <div class="user">User System</div>
+    <div class="post">Post System</div>
+    <div class="analytics"">Analytics System</div>
+    </center>
+
+    <!-- main -->
+
+    <div class="main">
+
+    <!-- form page  -->
+    <form id="form" action="/signup" method="post">
+        <h1>Create Your Account</h1>
+
+        <!-- jinja notification template -->
+
+        {%with message = get_flashed_messages(with_categories=True)%}
+        {%if message%}
+        {%for cat,message in message%}
+        <div class="messag">
+        <p><i class="fas fa-exclamation-triangle"></i>{{message}}</p>
+    </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+        
+        <!-- username form -->
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Abebe" required>
+
+        <!-- email form -->
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="you@email.com" required>
+
+        <!-- password form -->
+        <label for="password">Password</label>
+        <input type="password" minlength="8" name="password" id="" placeholder="......." required>
+        <input type="hidden" name="device" id="device">
+        <button type="submit" onclick="but()">signup </button>
+        <span>Already have an account? <a href="/login">Login</a></span>
+    </form>
+    </div>
+    <center>
+    <div class="anime">
+        <div class="container">
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
+  <div class="dot dot-3"></div>
+</div>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur
+        result="blur"
+        stdDeviation="10"
+        in="SourceGraphic"
+      ></feGaussianBlur>
+      <feColorMatrix
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
+        mode="matrix"
+        in="blur"
+      ></feColorMatrix>
+    </filter>
+  </defs>
+</svg>
+
+    </div>
+    </center>
+    <div class="bb">
+
+    </div>
+    <script src="{{url_for("static",filename="js/signup.js")}}"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ name }}'s Post</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+        .all{
+            display: flex;
+
+            justify-content: space-between;
+        }
+        body{
+            background:rgb(41, 40, 40)
+        }
+        .pro{
+            width:4em;
+            border-radius:50%
+        }
+        .head{
+            display: flex;
+            gap:1em;
+            margin-bottom: 0.5em;
+        }
+        .maina{
+            width:30em;
+            background:black;
+            padding:1em 1em;
+            border-radius: 10px;
+            color:white;
+            box-shadow: 0 0 5px blak;
+        }
+        video,img{
+            width:100%
+        }
+        .com{
+          width:50em;
+        }
+        .comment{
+          display: flex;
+          padding:0.5em 0.5em;
+          border-radius:10px;
+          color:white;
+          background:rgb(39, 36, 36);
+          box-shadow: 0 0 5px black;
+          flex-direction: column;
+        }
+        a{
+          color:white
+        }
+        .an{
+          display: flex;
+          align-items: center;
+          gap: 1em;
+          color:white;
+          margin-bottom: 0.5em;
+        }
+        .an img{
+          width:3em;
+          border-radius:100px
+        }
+        .v{
+          gap:1em;
+          margin-bottom: 1em;
+        }
+        .jk{
+          display: flex;
+          gap: 1em;
+          flex-direction: column;
+        }
+        .fin{
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
+          align-content: space-between;
+        }
+       input{
+        width:35em;
+        height:3em;
+        border-radius:100px;
+        padding-left: 1em;
+       }
+       button{
+          height:3em;
+          border-radius:10px;
+          background:rgb(104, 104, 248);
+          color:white;
+          border: 1px solid black;
+       }
+       button:hover{
+        text-shadow: 0 5px 5px blue,
+        0 10px 5px red;
+        cursor:pointer
+       }
+       .dx{
+        display: flex;
+        gap:2em
+       }
+        .ll{
+          height: 80vh;
+          overflow-y:scroll ;
+
+        }
+    </style>
+  </head>
+  <body class="">
+   <div class="all">
+    <div class="maina">
+        <div class="head">
+                <img class="pro" src="{{op}}" alt="" />
+              
+                  <h2 class="us">{{ username }}</h2>
+                </div>
+
+              {% if 'image' in file %}
+            
+                <img src="{{ file }}" alt="Post Image" class="" />
+              
+              {% elif 'video' in file %}
+              
+                <video src="{{ file }}" controls class="">
+                  Your browser does not support the video tag.
+                </video>
+              
+              {% endif %}
+              <p class="e">{{ caption }}</p>
+              
+                <span class="mr-4"
+                  ><i class="far fa-comment mr-1"></i> {{ comment|length }}
+                  comments</span
+                >
+              
+            
+          </div>
+          <div class="mainb">
+        
+        <div class="ll">
+          <!-- Comments Section -->
+          <h3 class="" style="color: white">
+            <i class="fas fa-comments mr-2 text-blue-500"></i>
+            Comments
+          </h3>
+
+         <div class="com">
+          <div class="fin">
+          <div class="oop">
+            <div class="v">
+            {% for c in comment %}
+           <div class="comment">
+            <div class="an">
+                  <img src="{{c.im}}" alt="">
+                  {{ c.commenter }}
+                </div>
+               
+              
+<div class="jk">
+              <h1>{{ c.comment }}</h1>
+<h3>{{c.date}}</h3>
+</div>
+              {% if c.edit %}
+              <div class="dx">
+                <a href="/comment/edit/{{c.messageid}}" class="">
+                  <i class="fas fa-pencil-alt mr-1 text-xs"></i> Edit
+                </a>
+                <a
+                  href="/comment/delete/{{c.messageid}}"
+                  onclick="return deleteComment('{{ c.commenter }}')"
+                  class=""
+                >
+                  <i class="fas fa-trash-alt mr-1 text-xs"></i> Delete
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          
+</div>
+</div>
+</div>
+          <!-- Comment Form -->
+        
+      </div>
+      </div>
+       <div class="lis">
+            <h3 class="">
+              <i class="fas fa-pen mr-2 text-blue-500"></i>
+              Leave a Comment
+            </h3>
+            <form method="POST">
+             
+                <input
+                  name="message"
+                  placeholder="Share your thoughts..."
+                  class=""
+                  rows="4"
+                  required
+                />
+              
+              <button type="submit" class="">
+                <i class="fas fa-paper-plane mr-2"></i> Post Comment
+              </button>
+            </form>
+        
+      </div>
+      </div>
+      
+    </div>
+    
+    <script>
+      function editComment(user) {
+        console.log("Editing comment by: " + user);
+        // Optional: Open modal or redirect to edit form
+      }
+
+      
+    </script>
+  </body>
+</html>

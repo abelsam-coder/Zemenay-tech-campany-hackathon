@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/dashboard.css")}}">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/pro.css")}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&family=Staatliches&display=swap" rel="stylesheet">
+    <title>User Posts</title>
+    
+</head>
+<body>
+    <div class="all">
+         <nav>
+    <ul>
+        <div class="logo">
+        <img src="{{profile}}" alt="">
+       <div class="def">
+        <h1>{{username}}</h1>
+        <h3>{{followers}} followers</h3>
+     </div>
+     </div>
+
+        </center>
+        <li><a href=""><i class="fas fa-home"></i>
+ Home</a></li>
+        <li><a href="/post"><i class="fas fa-file-alt"></i>   
+post</a></li>
+        <li><a href="/profile"><i class="fas fa-user"></i>
+
+Profile</a></li>
+        <li><a href="/chat"><i class="fas fa-comments"></i> Chat</a></li>
+        
+        <li><a href="logout"><i class="fas fa-sign-out-alt"></i>
+ Logout</a></li>
+ <li class="lower"><a href="/setting"><i class="fas fa-cog"></i>  Setting</a>
+<ul>
+    <li><a href="/setting/content/comment"><i class="fas fa-comment-dots"></i>Comment</a></li>
+    <li><a href="/security"><i class="fas fa-shield-alt"></i>Security alert</a></li>
+    <li><a href="/setting/content/like"><i class="far fa-heart"></i>like</a></li>
+    <li><a href="/setting/content/privacy"><i class="fas fa-photo-video"></i>content</a></li>
+</ul></li>
+    </ul>
+    </nav>
+    </center>
+    <div class="k">
+    
+    <main>
+        <div class="user">
+            <form action="/user" method="post">
+                <input type="text">
+            </form>
+        </div>
+        {%for it in list%}
+        <img src="{{it.image}}" alt="">
+        <h1>{{it.username}}</h1>
+        <h1>{{it.followers}}</h1>
+        {%endfor%}
+       </main>
+      
+<script>
+  
+    function like(id){
+        // If undefined, assume not liked yet
+      
+
+        
+            alert("Liked post: " + id);
+            fetch(`/like/${id}`, {
+                method: "GET"
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("Like response:", data);
+                
+            })
+            .catch(err => console.error("Like error:", err));
+        } 
+function save(id){
+        alert("Saved post: " + id);
+        fetch(`/save/${id}`, {
+            method: "GET" // change to POST if needed
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Save response:", data);
+           
+        })
+        .catch(err => console.error("Save error:", err));
+    }
+
+
+</script>
+
+</body>
+</html>

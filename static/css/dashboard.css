@@ -1,0 +1,394 @@
+body{
+    margin:0;
+    padding:0
+}
+nav{
+   
+    position: fixed;
+    height:100vh;
+    margin-left:0;
+    color:white;
+    margin-left: -1.5em;
+    width:20em;
+    background:black
+}
+.post{
+    /* animation-name: an;
+    animation-range: view() ;
+    animation-timeline: entry 10% cover 10%;
+    animation-duration: 2s;
+
+    animation-timing-function: ease-in-out; */
+    box-shadow:0 0 5px blanchedalmond
+}
+
+@keyframes an{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+ul{
+    margin: 0;
+    margin-left:0
+}
+.like:hover,.save:hover{
+    color:blue
+}
+.like:focus,.save:focus{
+    color:blue
+}
+.logo{
+    left:0;
+    position: relative;
+    margin-top:2em;
+    align-items:center;
+    display: flex;
+    padding-bottom: 1em;
+    border-bottom: 2px solid rgb(152, 151, 151);
+}
+.def{
+    margin-left:1em;
+    
+}
+.def h3{
+    margin-top:-1em
+}
+.icon{
+    display: none;
+}
+.logo img,.eer{
+    width:6em;
+    border:2px solid black;
+    box-shadow:0 0 3px white;
+    height:6em;
+    object-fit: cover;
+    border-radius:50%
+}
+
+li{
+    list-style: none;
+    margin-left:1.3em
+}
+a{
+    text-decoration: none;
+    font-size:1.2em
+}
+nav ul{
+    display:flex;
+    flex-direction: column;
+    gap:1em;
+    padding-left: 2em;
+}
+.logo h1{
+    font-family: "Playfair Display", serif;
+}
+.logo h3{
+    font-family: "Staatliches", sans-serif;
+    color:rgb(101, 101, 197);
+    font-weight: 100;
+    
+}
+.lower ul {
+  display: none;
+  position: absolute;
+  top:0;
+  margin-top: -9em;
+}
+
+.lower:hover ul {
+  display: block;
+}
+
+.lower{
+    position: fixed;
+    bottom:0
+}
+nav li{
+    padding: 0.5em 1em;
+}
+a{
+    color:rgb(58, 127, 255)
+}
+li:hover{
+    background:rgb(200, 194, 194);
+    border-radius:10px;
+    width:13em
+}
+main{
+    margin-left: 18.5em;
+}
+.kl{
+    margin-top: -0.7em;
+}
+.button {
+  display: inline-block;
+  padding: 12px 28px;
+  margin-top: -2em;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-image: linear-gradient(to bottom right, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0px 4px 0px #0072ff;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 0px #0072ff;
+}
+
+.button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+  background-image: linear-gradient(to bottom right, #0072ff, #00c6ff);
+}
+
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.button:before {
+  top: -3px;
+  left: -3px;
+  border-radius: 40px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+}
+
+.button:after {
+  bottom: -3px;
+  right: -3px;
+  border-radius: 40px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+#o{
+    position:fixed;
+    background:rgb(39, 39, 45);
+    width:82%;
+    padding-bottom: 1em;
+    padding-right: 5em;
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
+.user{
+    font-family: "Staatliches", sans-serif;
+}
+.caption{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 1em 1em;
+    font-size: 1.4em;
+    color:white
+}
+.date{
+    font-size: large;
+    color:white;
+    padding-left: 1em;
+}
+.meta{
+    padding-left:1.2em;
+    font-size: 1.2em;
+    color:white
+}
+button{
+    padding-left: 1em;
+}
+.s{
+    display:flex
+}
+.right{
+    gap:1em;
+    padding-right: 2em;
+    margin-right: 2em;
+    font-size: 1.2em;
+}
+button{
+    border-radius:10px;
+    background:black;
+    color:white;
+    padding-right: 1em;
+    cursor: pointer;
+    font-family: serif;
+    font-weight: bolder;
+    border:2px solid rgb(66, 60, 60);
+}
+#o input{
+    height:3em;
+    border-radius:10px;
+    border: 2px solid black;
+    width:25em;
+    padding-left:1em;
+    margin-right: 1em;
+    color:white;
+    background:rgb(23, 22, 22);
+}
+input:focus{
+    outline: black;
+}
+.p{
+    width:3em;
+    height:3em;
+    border-radius:100px
+}
+body{
+    background:black
+}
+.head{
+    display:flex;
+    padding: 0.5em 0.5em;
+    align-items:center;
+    gap:0.5em;
+    padding-bottom: 1em;
+}
+.dd{
+   
+  margin-left: 2.5em;
+  
+   
+   display:flex;
+   flex-direction:column;
+   gap:4em
+}
+.right{
+    align-items:center;
+    padding-right: 1em;
+}
+.post{
+    background:rgb(45, 42, 42);
+    border-radius:10px;
+    padding: 0 0;
+     width:70%;
+}
+#w{
+    background:none;
+    border:none;
+    font-size: 1.2em;
+}
+.icon li:hover{
+   background:none;
+}
+.icon{
+    width:100%;
+        display: flex;
+        position: relative;
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+        justify-content: space-between;
+        background:black;
+        border-top: 1px solid grey;
+        z-index: 1;
+}
+.icon li {
+    padding: 0 0 ;
+    width:0;
+}
+.anot{
+    display: none;
+    padding-right: 1.5em;
+}
+.anot img{
+    width:3em;
+    border-radius:50%;
+    border:2px solid grey;
+}
+.gif h1 {
+  position: absolute;
+  margin-top: 30vh;
+  width: 100%;
+  text-align: center;
+  font-size: 333%;
+  font-family: sans-serif;
+  color: rgb(19, 18, 18);
+  opacity: 0.5;
+}
+.gif{
+    position: fixed;
+    z-index: 1;
+    top:0;
+    display: none;
+}
+canvas {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+}
+.anot ul{
+    position:absolute;
+    border-radius:10%;
+    width:7em;
+    gap:2em;
+    display: none;
+    padding-left: -2em;
+    margin-left: -7em;
+    background: rgb(29, 28, 28);
+}
+.active{
+    color:brown;
+}
+.to{
+    color:white
+}
+.anot ul li{
+    margin-left: -1em;
+    width:7em
+}
+.pt{
+    cursor:pointer;
+}
+@media only screen and (max-width: 480px){
+    nav{
+        display:none
+    }
+    .icon{
+        display: block;
+    }
+    .op{
+        display: none;
+    }
+    main{
+        margin-left: 0;
+    }
+    form{
+        width:100%
+    }
+    .icon{
+        
+        display: block;
+    }
+    .icon li{
+        
+        padding: 0 0 ;
+        width:auto;
+    }
+    .right{
+        display: none;
+    }
+    .anot{
+        display: block;
+    }
+    input{
+        width: 130%;
+    }
+    .button{
+        display: none;
+    }
+}

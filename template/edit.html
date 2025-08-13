@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+  font-family: 'PT Sans', sans-serif;
+  color: #fff;
+  display: flex;
+  background-attachment:fixed;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+form {
+  background: #2a2a2a;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+form label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+form input {
+  height: 3em;
+  padding-left: 1em;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  background: #444;
+  color: #fff;
+}
+
+form input::placeholder {
+  color: #bbb;
+}
+
+form button {
+  background: #6c63ff;
+  color: white;
+  font-size: 1.2em;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #4b45d6;
+}
+
+.flash-message {
+  background: #ff4d4d;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}
+
+.back-btn {
+  margin-top: 20px;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #555;
+}
+
+    </style>
+</head>
+<body>
+   {% with message = get_flashed_messages() %}
+  {% if message %}
+    {% for message in message %}
+      <div class="flash-message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form action="" method="post">
+  <label for="message">Message</label>
+  <input type="text" name="message" id="message" placeholder="Edit message ...">
+  <button type="submit">Edit</button>
+</form>
+
+<a href="/comment/{{f}}"><button class="back-btn" onclick="back()">Back</button></a>
+
+    <script>
+        function back(){
+            window.href.location = ""
+        }
+    </script>
+</body>
+</html>

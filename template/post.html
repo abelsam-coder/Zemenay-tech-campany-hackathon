@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+ 
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="{{url_for("static",filename="css/signup.css")}}">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100..900&family=Oswald:wght@200&family=Overlock:ital,wght@0,400;1,900&family=PT+Sans:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,900&family=Quicksand:wght@300..700&family=Staatliches&display=swap" rel="stylesheet" />
+
+  <title>Post Dashboard</title>
+
+  <style>
+    .preview {
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+    }
+    video.preview {
+      max-width: 100%;
+      height: auto;
+      controls: true;
+    }
+  </style>
+</head>
+<body>
+  <div class="all">
+        <nav>
+    <ul>
+        <div class="logo">
+        <img src="{{profile}}" alt="">
+       <div class="def">
+        <h1>{{username}}</h1>
+        <h3>{{followers}} followers</h3>
+     </div>
+     </div>
+
+        </center>
+        <li><a href="/dashboard"><i class="fas fa-home"></i>
+ Home</a></li>
+        <li><a href="/post"><i class="fas fa-file-alt"></i>   
+post</a></li>
+        <li><a href="/profile"><i class="fas fa-user"></i>
+
+Profile</a></li>
+        <li><a href="/chat"><i class="fas fa-comments"></i> Chat</a></li>
+        
+        <li><a href="logout"><i class="fas fa-sign-out-alt"></i>
+ Logout</a></li>
+ <li class="lower"><a href="/setting"><i class="fas fa-cog"></i>  Setting</a>
+<ul>
+    <li><a href="/setting/content/comment"><i class="fas fa-comment-dots"></i>Comment</a></li>
+    <li><a href="/security"><i class="fas fa-shield-alt"></i>Security alert</a></li>
+    <li><a href="/setting/content/like"><i class="far fa-heart"></i>like</a></li>
+    <li><a href="/setting/content/privacy"><i class="fas fa-photo-video"></i>content</a></li>
+</ul></li>
+    </ul>
+    </nav>
+
+    <form id="form" action="/post" method="post" enctype="multipart/form-data">
+      <label for="name">Name/Title</label>
+      <input required type="text" name="name" id="name" placeholder="News..." />
+
+      <label for="caption">Caption</label>
+      <textarea required name="caption" id="caption" placeholder="Welcome"></textarea>
+
+      <label for="key">Hashtag/Related Key</label>
+      <textarea required name="key" id="key" placeholder="#abel"></textarea>
+
+      <label for="file">Choose Image or Video</label>
+      <input required type="file" name="file" id="file" accept="image/*,video/*" />
+
+      <button type="submit" class="but" onclick="but()">Submit</button>
+    </form>
+
+    <!-- Preview Container -->
+    <div id="preview-container" style="margin-top: -25em;">
+      <img id="image-preview" class="preview" style="display:none;" alt="Image Preview" />
+      <video id="video-preview" class="preview" style="display:none;" controls></video>
+    </div>
+    <div class="anime" style="z-index:2">
+        <div class="container">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+    </div>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur
+        result="blur"
+        stdDeviation="10"
+        in="SourceGraphic"
+      ></feGaussianBlur>
+      <feColorMatrix
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
+        mode="matrix"
+        in="blur"
+      ></feColorMatrix>
+    </filter>
+  </defs>
+</svg>
+    </div>
+    </center>
+    <div class="bb" style="z-index: 1;">
+    </div>
+    
+    <script>
+      function but() {
+
+  // Show elements immediately
+  document.querySelector('.anime').style.display = "block";
+  document.querySelector('.bb').style.display = "block";
+
+  // Redirect after 5 seconds
+  setTimeout(() => {
+    document.querySelector('.anime').style.display = "none";
+  document.querySelector('.bb').style.display = "none";
+  }, 4000);
+}
+
+      document.getElementById("file").addEventListener("change", function () {
+        const file = this.files[0];
+        const imagePreview = document.getElementById("image-preview");
+        const videoPreview = document.getElementById("video-preview");
+
+        imagePreview.style.display = "none";
+        videoPreview.style.display = "none";
+
+        if (!file) return;
+
+        const fileType = file.type;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          if (fileType.startsWith("image/")) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block";
+          } else if (fileType.startsWith("video/")) {
+            videoPreview.src = e.target.result;
+            videoPreview.style.display = "block";
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    </script>
+  </div>
+</body>
+</html>

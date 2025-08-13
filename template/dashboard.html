@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merienda:wght@300..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/dashboard.css")}}">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/new.css")}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&family=Staatliches&display=swap" rel="stylesheet">
+    <title>User Posts</title>
+    
+</head>
+<body>
+    <div class="all">
+       
+        <nav>
+    <ul>
+        <div class="logo">
+        <img src="{{profile}}" alt="">
+       <div class="def">
+        <h1>{{username}}</h1>
+        <h3>{{followers}} followers</h3>
+     </div>
+     </div>
+
+        </center>
+        <li><a href=""><i class="fas fa-home"></i>
+ Home</a></li>
+        <li><a href="/post"><i class="fas fa-file-alt"></i>   
+post</a></li>
+        <li><a href="/profile"><i class="fas fa-user"></i>
+
+Profile</a></li>
+        <li><a href="/chat"><i class="fas fa-comments"></i> Chat</a></li>
+        
+        <li><a href="logout"><i class="fas fa-sign-out-alt"></i>
+ Logout</a></li>
+ <li class="lower"><a href="/setting"><i class="fas fa-cog"></i>  Setting</a>
+<ul>
+    <li><a href="/setting/content/comment"><i class="fas fa-comment-dots"></i>Comment</a></li>
+    <li><a href="/security"><i class="fas fa-shield-alt"></i>Security alert</a></li>
+    <li><a href="/setting/content/like"><i class="far fa-heart"></i>like</a></li>
+    <li><a href="/setting/content/privacy"><i class="fas fa-photo-video"></i>content</a></li>
+</ul></li>
+    </ul>
+    </nav>
+    </center>
+    <div class="k">
+    
+    <main>
+        <div class="g">
+        <div class="an"></div>
+        <div class="c">
+    <form id="o" action="/search" method="get">
+        <div class="s">
+        <input type="text" name="q" id="" placeholder="search...">
+        <div class="kl">
+        <button type="submit" class="button">Search</button>
+        </div>
+        </div>
+        <div class="right">
+            <a href="/setting"><i class="fas fa-cog"></i></a>
+            <a href="/profile"><i class="fas fa-user"></i></a>
+        </div>
+        <div class="anot">
+        <img id="pt" src="{{profile}}" alt="">
+        <ul>
+              <li><a href=""><i class="fas fa-home"></i>
+ Home</a></li>
+        <li><a href="/post"><i class="fas fa-file-alt"></i>   
+post</a></li>
+        <li><a href="/profile"><i class="fas fa-user"></i>
+
+Profile</a></li>
+        <li><a href="/chat"><i class="fas fa-comments"></i> Chat</a></li>
+        <li><a href="/setting"><i class="fas fa-cog"></i>  Setting</a></li>
+        <li><a href="logout"><i class="fas fa-sign-out-alt"></i>
+ Logout</a></li>
+        </ul>
+    </div>
+    </form>
+    <br><br><br><br><br>
+    <div class="dd">
+    {% for item in f %}
+    
+    <div class="post" id="post-{{ item.id }}">
+        <div class="head">
+        <img class="p" src="{{item.profi}}" alt="">
+        <div class="user">{{ item.username }} <br> 
+            {%if ff == "follow"%}
+            <a href="/follow/{{ item.username }}">{{ff}}</a></div>
+            {%elif ff == "followed"%}
+            <a href="/unfollow/{{ item.username }}">{{ff}}</a></div>
+            {%endif%}
+        </div>
+       
+        {% if "image" in item.file %}
+        <img class="f" src="{{ item.file }}" alt="User media" style="max-width:100%;width:100%">
+        {% elif "video" in item.file %}
+        <video class="f" controls src="{{ item.file }}" style="max-width:100%;width:100%"></video>
+        {% endif %}
+         <div class="caption">. {{ item.caption }}</div>
+        <div class="meta">Likes: {{ item.like }} | <a href="/comment/{{item.id}}">Comments: {{ item.comment }}</a></div>
+        <h1 class="date">{{item.date}}</h1>
+        <button class="like" id="w" onclick='like("{{ item.id }}")'><i class="fas fa-thumbs-up"></i>
+</button>
+        <button class="save" id="w" onclick='save("{{ item.id }}")'><i class="fas fa-save"></i>
+</button>
+        <button id="w"><a href="/comment/{{item.id}}"><i class="fas fa-comment"></i>
+</a></button>
+    </div>
+    
+    {% endfor %}
+    </div>
+    </div></div>
+    </div>
+    </main>
+
+<div class="gif">
+    <h1>Welcome !</h1>
+<canvas id="canvas"></canvas>
+</div>
+
+    </div>
+    <!-- <div class="icon">
+        <li><a href=""><i class="fas fa-home"></i></a></li>
+        <li><a href=""><i class="fas fa-comments"></i></a></li>
+        <li><a href=""><i class="fas fa-file-alt"></i></a></li>
+        <li><a href=""><i class="fas fa-user"></i></a></li>
+        <li><a href=""><i class="fas fa-cog"></i></a></li>
+    </div> -->
+    
+<script>
+    let nee = {{ new }}; // Assuming this is being rendered server-side, like with Jinja2
+    console.log(nee)
+if (nee == true) {
+    document.querySelector(".gif").style.display = "block"; // Use = instead of ==
+    setTimeout(() => {
+        // You can hide it again or trigger another action here
+        document.querySelector(".gif").style.display = "none";
+    }, 4000);
+} else {
+    // JavaScript doesn't use `pass` like Python
+    // You can leave this empty or add an else action
+}
+
+    let W = window.innerWidth;
+let H = window.innerHeight;
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+const maxConfettis = 150;
+const particles = [];
+
+const possibleColors = [
+  "DodgerBlue",
+  "OliveDrab",
+  "Gold",
+  "Pink",
+  "SlateBlue",
+  "LightBlue",
+  "Gold",
+  "Violet",
+  "PaleGreen",
+  "SteelBlue",
+  "SandyBrown",
+  "Chocolate",
+  "Crimson"
+];
+
+function randomFromTo(from, to) {
+  return Math.floor(Math.random() * (to - from + 1) + from);
+}
+
+function confettiParticle() {
+  this.x = Math.random() * W; // x
+  this.y = Math.random() * H - H; // y
+  this.r = randomFromTo(11, 33); // radius
+  this.d = Math.random() * maxConfettis + 11;
+  this.color =
+    possibleColors[Math.floor(Math.random() * possibleColors.length)];
+  this.tilt = Math.floor(Math.random() * 33) - 11;
+  this.tiltAngleIncremental = Math.random() * 0.07 + 0.05;
+  this.tiltAngle = 0;
+
+  this.draw = function() {
+    context.beginPath();
+    context.lineWidth = this.r / 2;
+    context.strokeStyle = this.color;
+    context.moveTo(this.x + this.tilt + this.r / 3, this.y);
+    context.lineTo(this.x + this.tilt, this.y + this.tilt + this.r / 5);
+    return context.stroke();
+  };
+}
+
+function Draw() {
+  const results = [];
+
+  // Magical recursive functional love
+  requestAnimationFrame(Draw);
+
+  context.clearRect(0, 0, W, window.innerHeight);
+
+  for (var i = 0; i < maxConfettis; i++) {
+    results.push(particles[i].draw());
+  }
+
+  let particle = {};
+  let remainingFlakes = 0;
+  for (var i = 0; i < maxConfettis; i++) {
+    particle = particles[i];
+
+    particle.tiltAngle += particle.tiltAngleIncremental;
+    particle.y += (Math.cos(particle.d) + 3 + particle.r / 2) / 2;
+    particle.tilt = Math.sin(particle.tiltAngle - i / 3) * 15;
+
+    if (particle.y <= H) remainingFlakes++;
+
+    // If a confetti has fluttered out of view,
+    // bring it back to above the viewport and let if re-fall.
+    if (particle.x > W + 30 || particle.x < -30 || particle.y > H) {
+      particle.x = Math.random() * W;
+      particle.y = -30;
+      particle.tilt = Math.floor(Math.random() * 10) - 20;
+    }
+  }
+
+  return results;
+}
+
+window.addEventListener(
+  "resize",
+  function() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  },
+  false
+);
+
+// Push new confetti objects to `particles[]`
+for (var i = 0; i < maxConfettis; i++) {
+  particles.push(new confettiParticle());
+}
+
+// Initialize
+canvas.width = W;
+canvas.height = H;
+Draw();
+
+
+
+  let a = true;
+  document.getElementById("pt").addEventListener("click",() => {
+    if (a){
+        document.querySelector(".anot ul").style.display = "block";
+        a = false;
+    }
+    else{
+        document.querySelector(".anot ul").style.display = "none";
+        a = true;
+    }
+  })
+
+    function like(id){
+            fetch(`/like/${id}`, {
+                method: "GET"
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.error("Like error:", err));
+        } 
+function save(id){
+        fetch(`/save/${id}`, {
+            method: "GET" // change to POST if needed
+        })
+        .then(res => res.json())
+        .then(data => {
+           
+        })
+        .catch(err => console.error("Save error:", err));
+    }
+const likeBtn = document.querySelector(".like");
+
+likeBtn.addEventListener("click", () => {
+    const liked = localStorage.getItem("liked") === "true";
+
+    // Toggle state
+    localStorage.setItem("liked", !liked);
+
+    // Toggle class
+    likeBtn.classList.toggle("active", !liked);
+    likeBtn.classList.toggle("to", liked);
+});
+
+
+
+</script>
+
+</body>
+</html>

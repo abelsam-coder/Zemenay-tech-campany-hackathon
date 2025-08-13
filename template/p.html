@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&family=Staatliches&display=swap" rel="stylesheet">
+    <title>Private Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/dashboard.css")}}">
+    <link rel="stylesheet" href="{{url_for("static",filename="css/new.css")}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0;
+    background-color: #3f3c3c;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #0088cc;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #006699;
+}
+
+/* User List */
+.side {
+    width: 250px;
+    background-color: #242427;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#searchUser {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#user-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.user:hover {
+    background: #d3d3d3;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user p {
+    font-size: 16px;
+}
+
+/* Chat Container */
+.chat-container {
+    flex: 1;
+    width:40em;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Chat Box Fix */
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(33, 32, 32);
+    display: flex;
+    flex-direction: column; /* Fixes message order */
+    scroll-behavior: smooth;
+}
+
+/* Message Styling */
+.sent {
+    background: #0088cc;
+    color: white;
+    text-align: right;
+    padding: 12px;
+    margin: 6px;
+    border-radius: 12px;
+    max-width: 70%;
+    align-self: flex-end;
+}
+
+.received {
+    background: rgb(59, 59, 62);
+    color: black;
+    text-align: left;
+    padding: 12px;
+    margin: 6px;
+    border-radius: 12px;
+    max-width: 70%;
+    align-self: flex-start;
+}
+
+.sent span, .received span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    text-align: right;
+}
+
+/* Fix Input and Button */
+#chatForm {
+    display: flex;
+    gap: 10px;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #4e4a4a;
+    border-radius: 5px;
+}
+.user{
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    background-color: #0088cc;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #006699;
+}
+#user_list{
+    margin-left:10em;
+    position:absolute
+}
+nav{
+    position: relative;
+}
+.lll{
+    display: flex;
+}
+    </style>
+</head>
+<body>
+    <div class="sideba">
+          <nav>
+    <ul>
+        <div class="logo">
+        <img src="{{profile}}" alt="">
+       <div class="def">
+        <h1>{{username}}</h1>
+        <h3>{{followers}} followers</h3>
+     </div>
+     </div>
+
+        </center>
+        <li><a href=""><i class="fas fa-home"></i>
+ Home</a></li>
+        <li><a href="/post"><i class="fas fa-file-alt"></i>   
+post</a></li>
+        <li><a href="/profile"><i class="fas fa-user"></i>
+
+Profile</a></li>
+        <li><a href="/chat"><i class="fas fa-comments"></i> Chat</a></li>
+        
+        <li><a href="logout"><i class="fas fa-sign-out-alt"></i>
+ Logout</a></li>
+ <li class="lower"><a href="/setting"><i class="fas fa-cog"></i>  Setting</a>
+<ul>
+    <li><a href="/setting/content/comment"><i class="fas fa-comment-dots"></i>Comment</a></li>
+    <li><a href="/security"><i class="fas fa-shield-alt"></i>Security alert</a></li>
+    <li><a href="/setting/content/like"><i class="far fa-heart"></i>like</a></li>
+    <li><a href="/setting/content/privacy"><i class="fas fa-photo-video"></i>content</a></li>
+</ul></li>
+    </ul>
+    </nav>
+    </div>
+
+    <div class="side">
+        <h1>Users</h1>
+        <input type="text" id="searchUser" placeholder="Search for a user...">
+        <div id="user-list">
+            {% for l in users %}
+            <section class="user" style="display: flex;flex-direction:row" data-name="{{ l.name }}">
+                <div class="lll">
+                <img src="{{ l.image }}" alt="Profile Picture">
+                <p>{{ l.name }}</p>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <h2 id="selected-user">Chat </h2>
+        <div class="chat-box" id="chatBox">
+            {% for sender, message, timestamp in messages %}
+            <p class="{% if sender == username %}sent{% else %}received{% endif %}">
+                <strong>{{ sender }}:</strong> {{ message }} <span>{{ timestamp }}</span>
+            </p>
+            {% endfor %}
+        </div>
+        <form id="chatForm">
+            <input type="text" id="messageInput" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        const socket = io();
+let receiverName = new URLSearchParams(window.location.search).get("receiver");
+let senderName = document.querySelector("h2").innerText.replace("Welcome, ", "");
+
+// Select User & Reload Chat Automatically
+document.getElementById("user-list").addEventListener("click", function(event) {
+    if (event.target.closest(".user")) {
+        receiverName = event.target.closest(".user").getAttribute("data-name");
+        window.location.href = `/chat?receiver=${encodeURIComponent(receiverName)}`;
+    }
+});
+
+// Search Users Dynamically
+document.getElementById("searchUser").addEventListener("input", function() {
+    let query = this.value.toLowerCase();
+    console.log(query)
+    
+    document.querySelectorAll(".user").forEach(user => {
+        let name = user.getAttribute("data-name").toLowerCase();
+        user.style.display = name.includes(query) ? "block" : "none";
+    });
+});
+
+// Send Private Message without Database Storage
+document.getElementById("chatForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const messageInput = document.getElementById("messageInput");
+    const chatBox = document.getElementById("chatBox");
+    const messageText = messageInput.value.trim();
+
+    if (messageText !== "" && receiverName) {
+        let timestamp = new Date().toLocaleTimeString();
+        console.log("Sending message:", messageText); // Debugging
+
+        socket.emit("private_message", { sender_name: senderName, receiver_name: receiverName, message: messageText, timestamp });
+
+        chatBox.innerHTML += `<p class="sent"><strong></strong> ${messageText} <span>${timestamp}</span></p>`;
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to latest message
+        messageInput.value = ""; // Clear input
+    } else {
+        console.log("Error: Message is empty or no receiver selected.");
+    }
+});
+const chatBox = document.getElementById("chatBox");
+const messages = []; // Store messages to maintain order
+socket.on("private_message", function(data) {
+    console.log("Received private message:", data); // Debugging
+
+    let chatBox = document.getElementById("chatBox");
+
+    // Create a new message element
+    let messageElement = document.createElement("p");
+    messageElement.className = data.sender === senderName ? "sent" : "received";
+    messageElement.innerHTML = `<strong>${data.sender}:</strong> ${data.message} <span>${data.timestamp}</span>`;
+
+    // **Ensure new messages append at the bottom, like Telegram**
+    chatBox.appendChild(messageElement);
+
+    // Auto-scroll to the latest message
+    chatBox.scrollTop = chatBox.scrollHeight;
+});
+
+
+    </script>
+</body>
+</html>
