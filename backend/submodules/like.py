@@ -6,7 +6,7 @@ like = Blueprint("like",__name__)
 def sa(id):
     print(id)
     username = session.get("username")
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     c.execute("SELECT * FROM like WHERE username = ? AND postid = ?",(username,id))
     f = c.fetchone()
@@ -17,3 +17,4 @@ def sa(id):
         c.execute("INSERT INTO like (username,postid) VALUES(?,?)",(username,id))
         db.commit()
     return jsonify({"liked":id})
+
