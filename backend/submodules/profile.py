@@ -5,7 +5,7 @@ profile = Blueprint("profile",__name__)
 @profile.route('/profile',methods=["POST","GET"])
 def p():
     lis = []
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     username = session.get("username")
     c.execute("SELECT image FROM profile WHERE name = ?",(username,))
@@ -71,7 +71,7 @@ def p():
 @profile.route('/edit/profile',methods=["POST","GET"])
 def edi():
     username = session.get("username")
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     if request.method == "POST":
         image = request.files["image"]
@@ -86,3 +86,4 @@ def edi():
     profile_image = result[0] if result else None
 
     return render_template("editprofile.html", profile_image=profile_image)
+
