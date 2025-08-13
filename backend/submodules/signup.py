@@ -14,7 +14,7 @@ def registeration():
         date = datetime.now().strftime("%B %A %y")
         bcrypt = current_app.extensions["bcrypt"]
         hashed_password = bcrypt.generate_password_hash(password).decode()
-        db = sqlite3.connect("../database/database.db")
+        db = sqlite3.connect("database/database.db")
         c = db.cursor()
         try:
             with open("../t.txt","r") as m:
@@ -30,4 +30,5 @@ def registeration():
             return let
         except sqlite3.IntegrityError:
             flash("username is taken please use another username","error")
+
     return render_template("signup.html")        
