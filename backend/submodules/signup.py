@@ -17,7 +17,7 @@ def registeration():
         db = sqlite3.connect("database/database.db")
         c = db.cursor()
         try:
-            with open("t.txt","r") as m:
+            with open("static.t.txt","r") as m:
                 q = m.read()
             c.execute("INSERT INTO authentication (username , email, password, date, device ) VALUES(?,?,?,?,?)",(username,email,hashed_password,date,device))
             c.execute("INSERT INTO setting (content,like,comment,chat,username) VALUES(?,?,?,?,?)",('public','public','public','public',username))
@@ -32,4 +32,5 @@ def registeration():
             flash("username is taken please use another username","error")
 
     return render_template("signup.html")        
+
 
