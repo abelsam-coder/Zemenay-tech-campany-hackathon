@@ -2,17 +2,17 @@ from flask import Flask,current_app,redirect,session,render_template,url_for,req
 from flask_socketio import SocketIO,emit,join_room
 import sqlite3
 from flask_bcrypt import Bcrypt,generate_password_hash,check_password_hash
-from submodules.signup import signup
-from submodules.dashboard import dash
-from submodules.post import post
-from submodules.setting import conset
-from submodules.follow import follow
-from submodules.comment import comment
-from submodules.search import search
-from submodules.login import login
-from submodules.like import like
-from submodules.save import save
-from submodules.profile import profile
+from backend.submodules.signup import signup
+from backend.submodules.dashboard import dash
+from backend.submodules.post import post
+from backend.submodules.setting import conset
+from backend.submodules.follow import follow
+from backend.submodules.comment import comment
+from backend.submodules.search import search
+from backend.submodules.login import login
+from backend.submodules.like import like
+from backend.submodules.save import save
+from backend.submodules.profile import profile
 app = Flask(__name__,template_folder="../template",static_folder="../static")
 app.secret_key = "secret"
 app.debug = True
@@ -147,4 +147,5 @@ def saved(username):
   
 app.extensions["sock"] = sock
 app.extensions["bcrypt"] = bcrypt
+
 app.run(host="0.0.0.0",port=8080)
