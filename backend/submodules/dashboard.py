@@ -12,7 +12,7 @@ def hom():
         abort(404)
     comment = ''
     like = ''
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     new = request.cookies.get("new")
     if new:
@@ -91,3 +91,4 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
