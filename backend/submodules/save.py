@@ -5,7 +5,7 @@ save = Blueprint("save",__name__)
 @save.route('/save/<string:id>',methods=["GET"])
 def sa(id):
     username = session.get("username")
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     
     c.execute("SELECT * FROM save WHERE username = ? AND postid = ?",(username,id))
@@ -17,3 +17,4 @@ def sa(id):
         c.execute("INSERT INTO save (username,postid) VALUES(?,?)",(username,id))
         db.commit()
     return jsonify({"saved":id})
+
