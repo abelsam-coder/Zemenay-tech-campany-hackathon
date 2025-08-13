@@ -7,7 +7,7 @@ def user():
     username = session.get("username")
     if not username:
         return redirect('/signup')
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     c.execute("SELECT * FROM another WHERE username = ?",(username,))
     f = c.fetchall()
@@ -17,10 +17,11 @@ def kickout(device):
     username = session.get("username")
     if not username:
         return redirect('/signup')
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     c.execute("INSERT INTO kickout (username,device) VALUES(?,?)",(username,device))
     db.commit()
     c.execute("SELECT * FROM another WHERE username = ?",(username,))
     f = c.fetchall()
+
     return render_template("users.html",users=f)    
