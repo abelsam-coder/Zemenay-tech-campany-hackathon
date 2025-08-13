@@ -11,7 +11,7 @@ def sea():
     if not usernam:
         return redirect("/login")
     search = request.args.get("q")
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     c.execute(
     "SELECT username, name, file, caption, id, date FROM post WHERE (key LIKE ? OR name LIKE ? OR caption LIKE ?) AND username != ?",
@@ -90,4 +90,5 @@ def sea():
         profile = image[0]
     else:
         profile = url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")    
+
     return render_template("dashboard.html",ff=followerr,username=usernam,profile=profile,followers=follow,f=a)
