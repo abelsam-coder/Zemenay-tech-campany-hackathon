@@ -4,7 +4,7 @@ import sqlite3,time,uuid,mimetypes,base64
 post = Blueprint("post",__name__)
 @post.route('/post',methods=["POST","GET"])
 def send():
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     username = session.get("username")
     c.execute("SELECT image FROM profile WHERE name = ?",(username,))
@@ -35,7 +35,7 @@ def send():
     return render_template("post.html",username=username,profile=pro,followers=follow)    
 @post.route('/post/edit/<string:id>', methods=["GET", "POST"])
 def edit_post(id):
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
 
     # Fetch existing post data
@@ -80,8 +80,9 @@ def edit_post(id):
 
 @post.route('/post/delete/<string:id>',methods=["POST","GET"])
 def delete(id):
-    db = sqlite3.connect("../database/database.db")
+    db = sqlite3.connect("database/database.db")
     c = db.cursor()
     c.execute("DELETE FROM post WHERE id = ?",(id,))
     db.commit()
+
     return redirect('/profile')         
