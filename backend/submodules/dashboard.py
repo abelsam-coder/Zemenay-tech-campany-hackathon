@@ -21,7 +21,11 @@ def hom():
         n = "false"  
     c.execute("SELECT image FROM profile WHERE name = ?",(usernam,))
     print(c.fetchone())
-    profile = c.fetchone()[0]
+    if c.fethcone():
+        profile = c.fetchone()[0]
+    else:
+        with open("static/t.txt","r") as k:
+            profile = k.read()
     c.execute("SELECT COUNT(*) FROM follow WHERE username = ?",(usernam,))
     followers = c.fetchone()
     for followers in followers:
@@ -92,6 +96,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
