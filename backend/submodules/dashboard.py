@@ -9,7 +9,7 @@ def hom():
     a = []
     usernam = session.get("username")
     if not usernam:
-        abort(404)
+        return redirect('/login')
     comment = ''
     like = ''
     db = sqlite3.connect("database/database.db")
@@ -100,6 +100,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
