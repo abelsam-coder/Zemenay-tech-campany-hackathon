@@ -34,6 +34,7 @@ def hom():
     followerr = ''
     l += 1
     for username,name,file,caption,id,date in f:
+        print(username,name,caption)
         c.execute("SELECT follower FROM follow WHERE follower = ? AND username = ?",(usernam,username))
         fol = c.fetchone()
         print(f"n {fol}")
@@ -99,6 +100,7 @@ def hom():
                 })
    
     return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
