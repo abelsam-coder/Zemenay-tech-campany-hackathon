@@ -1,0 +1,107 @@
+i built a social media platofrm for this project i use 5 programming language 
+1,html for web structure
+2,css for style
+3,js/javascript for responsiveness
+4,python (framework flask) for backend
+5,sqlite for database
+
+when you open the page first the api check whether you are in session if you are in session 
+it redirect to dashboard / admin panel if not it redirect to login page it ensure privacy
+
+in frontend i was trying to build user friendly web do i use best typography,color,animation, and layout as much
+as possible in 
+
+signup page:
+
+when you open signup api there is 3 form a user need to fill username, email , password if the username is 
+taken by another user it flash the message "username is taken by another user"  and also there is one hidden 
+form that is device detection form to detect and store which device is trying to register and the device name
+gonna stored in a a database.
+
+if a user put the correct credential the system put username into session and redirect to dashboard / admin panel
+
+html page (signup.html)
+backend (signup.py)
+
+login page:
+
+this page has 2 form username ,password the system allow only 5 attempt to make secure and protect from 
+brute force cyber attack (it is a popular cyber attack to gain access of another device "means trying many attempt
+until you get the correct much
+")  
+
+after 5 try the system disable the form and just count 5 minute after 5 minute the system just allow
+the form when a user fill incorrect credential show a pop up flash animation if a user fill correct credential
+the system put username in to session and redirect to dashboard / admin panel
+
+html page (login.py)
+backend (login.py)
+
+dashboard/admin panel :
+
+this page is so powerfull .
+
+if the user is redirected from signup page it show welcome animation for 4 second to make a user firendly experience
+in sidebar there is 6 list these are
+
+1,home
+2,post
+3,profile
+4,chat
+5,logout
+6,setting
+
+in home page it show post but the main part and the time consuming part is backend part the post
+is only showen according to setting configration like content it is the part of setting
+and there is search area to search what a user wanna service
+
+and also there is like , save, comment area in each post
+like and comment is show according to configration or setting means private or public to show the number of like and comment
+
+
+in post page there is 4 form that is
+
+1,name of the post
+2,caption
+3,related key
+4,file
+
+then you can post
+
+
+in profile page it show all thing about your profile like followers number, following, post number and edit profile page
+and also you can access edit , delet your post
+
+in chat system a user web socket for private chat system it is secure chat system 
+
+in logout system it just session.pop means out from session and redirect to login page
+
+setting / configration page:
+
+this page is just to configure setting like content privacy,like , comment, and security risk
+
+content privacy means it just show content for whom the user follow.
+like and comment means hide and show the number of like and comment respectively
+security risk means as i told you before when you sign and login the system detect the device platform name 
+after that when you try to login the system much the platform name from the previus signup if not much it show 
+a user and device platform in security risk page
+
+
+it actually take much time this page has 5 main folder
+
+1,backend
+2,database
+3,documentation
+4,static
+5,template
+
+overall it has around 14 table in a database
+as an individual competitor i try to do as much as i can i will try to make better code structer for another 
+time thanks you all
+
+
+link of the website https://zemenay-tech-campany-hackathon.onrender.com/
+
+Name: Abel Samuel
+Age: 18
+individual competitor
