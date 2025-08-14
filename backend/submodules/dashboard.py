@@ -20,11 +20,11 @@ def hom():
     else:
         n = "false"  
     c.execute("SELECT image FROM profile WHERE name = ?",(usernam,))
-    print(c.fetchone())
-    if c.fetchone():
-        profile = c.fetchone()[0]
+    image = c.fetchone()
+    if image:
+        profil = image[0]
     else:
-       profile =  url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")
+       profil =  url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")
     c.execute("SELECT COUNT(*) FROM follow WHERE username = ?",(usernam,))
     followers = c.fetchone()
     for followers in followers:
@@ -45,9 +45,9 @@ def hom():
         c.execute("SELECT comment,like,content FROM setting WHERE username = ?",(username,))
         r = c.fetchone()
         c.execute("SELECT image FROM profile WHERE name = ?",(username,))
-        pp = c.fetchone()
-        if pp:
-            p = pp[0]
+        image = c.fetchone()
+        if image:
+            p = image[0]
         else:    
             p=  url_for("static",filename="image/alexander-shatov-PEJtZfT6C1Q-unsplash.jpg")
         c.execute("SELECT postid FROM like WHERE username = ?",(usernam,))
@@ -99,7 +99,8 @@ def hom():
                     "date":date
                 })
    
-    return render_template("dashboard.html",f=a,profile=profile,username=usernam,followers=follow,ff=followerr,new=n)     
+    return render_template("dashboard.html",f=a,profile=profil,username=usernam,followers=follow,ff=followerr,new=n)     
+
 
 
 
