@@ -1,17 +1,18 @@
-i built a social media platofrm for this project i use 5 programming language 
-1,html for web structure
-2,css for style
-3,js/javascript for responsiveness
-4,python (framework flask) for backend
-5,sqlite for database
+i built a social media platofrm for this project i use 5 programming language
 
-when you open the page first the api check whether you are in session if you are in session 
-it redirect to dashboard / admin panel if not it redirect to login page it ensure privacy
+# 1,html for web structure
+# 2,css for style
+# 3,js/javascript for responsiveness
+# 4,python (framework flask) for backend
+# 5,sqlite for database
+
+. when you open the page first the api check whether you are in session if you are in session 
+it redirect to dashboard / admin panel if not it redirect to login page it ensure privacy.
 
 in frontend i was trying to build user friendly web do i use best typography,color,animation, and layout as much
 as possible in 
 
-signup page:
+# signup page:
 
 when you open signup api there is 3 form a user need to fill username, email , password if the username is 
 taken by another user it flash the message "username is taken by another user"  and also there is one hidden 
@@ -22,8 +23,12 @@ if a user put the correct credential the system put username into session and re
 
 html page (signup.html)
 backend (signup.py)
+# signup main page
+![](./Signup-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_51_34%20AM.png)
 
-login page:
+# signup page when username is taken
+![](./Signup-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_53_17%20AM.png)
+# login page:
 
 this page has 2 form username ,password the system allow only 5 attempt to make secure and protect from 
 brute force cyber attack (it is a popular cyber attack to gain access of another device "means trying many attempt
@@ -36,47 +41,73 @@ the system put username in to session and redirect to dashboard / admin panel
 
 html page (login.py)
 backend (login.py)
+# login main page
 
-dashboard/admin panel :
+![](./Login-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_44_14%20AM.png)
+ 
+ # login page no username found
+
+![](./Login-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_47_43%20AM.png)
+
+# login page timeout
+
+![](./Login-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_48_21%20AM.png)
+
+# dashboard/admin panel :
 
 this page is so powerfull .
 
 if the user is redirected from signup page it show welcome animation for 4 second to make a user firendly experience
 in sidebar there is 6 list these are
 
-1,home
-2,post
-3,profile
-4,chat
-5,logout
-6,setting
+# 1,home
+# 2,post
+# 3,profile
+# 4,chat
+# 5,logout
+# 6,setting
 
-in home page it show post but the main part and the time consuming part is backend part the post
+# 1,in home page 
+it show post but the main part and the time consuming part is backend part the post
 is only showen according to setting configration like content it is the part of setting
 and there is search area to search what a user wanna service
 
 and also there is like , save, comment area in each post
 like and comment is show according to configration or setting means private or public to show the number of like and comment
 
+# home page welcome animation 
 
-in post page there is 4 form that is
+![](./Signup-page%20and%202%20more%20pages%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%204_06_21%20AM.png)
 
-1,name of the post
-2,caption
-3,related key
-4,file
+# in post page 
+there is 4 form that is
+
+# 1,name of the post
+# 2,caption
+# 3,related key
+# 4,file
 
 then you can post
 
+![](./Post%20Dashboard%20and%202%20more%20pages%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%204_10_46%20AM.png)
 
-in profile page it show all thing about your profile like followers number, following, post number and edit profile page
+# in profile page 
+it show all thing about your profile like followers number, following, post number and edit profile page
 and also you can access edit , delet your post
 
-in chat system a user web socket for private chat system it is secure chat system 
+![](./User%20Posts%20and%202%20more%20pages%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%204_12_42%20AM.png)
 
-in logout system it just session.pop means out from session and redirect to login page
+# in chat system 
 
-setting / configration page:
+a user web socket for private chat system it is secure chat system 
+
+![](./Private%20Chat%20and%202%20more%20pages%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%204_14_18%20AM.png)
+
+# in logout system
+
+ it just session.pop means out from session and redirect to login page
+
+# setting / configration page:
 
 this page is just to configure setting like content privacy,like , comment, and security risk
 
@@ -102,6 +133,19 @@ time thanks you all
 
 link of the website https://zemenay-tech-campany-hackathon.onrender.com/
 
-Name: Abel Samuel
-Age: 18
+# dashboard design
+
+![](./dashboard.drawio.svg)
+
+
+# authentication design
+
+![](./authentication.drawio.svg)
+
+ 
+
+
+# Name: Abel Samuel
+# Age: 18
+
 individual competitor
