@@ -27,7 +27,7 @@ backend (signup.py)
 ![image alt](https://github.com/abelsam-coder/Zemenay-tech-campany-hackathon/blob/main/Signup-page%20-%20Personal%20-%20Microsoft%E2%80%8B%20Edge%208_14_2025%203_51_34%20AM.png?raw=true)
 
 # signup page when username is taken
-![](./Signup-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_53_17%20AM.png)
+[![](./Signup-page%20-%20Personal%20-%20Microsoft​%20Edge%208_14_2025%203_53_17%20AM.png](https://github.com/abelsam-coder/Zemenay-tech-campany-hackathon/blob/3ec1ce6a1802b8dbfae31e2364d5a1766bd0758a/Signup-page%20-%20Personal%20-%20Microsoft%E2%80%8B%20Edge%208_14_2025%203_53_17%20AM.png))
 # login page:
 
 this page has 2 form username ,password the system allow only 5 attempt to make secure and protect from 
@@ -149,5 +149,6 @@ link of the website https://zemenay-tech-campany-hackathon.onrender.com/
 # Age: 18
 
 individual competitor
+
 
 
